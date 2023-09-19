@@ -16,16 +16,17 @@ const List<Color> _colorThemes = [
 class AppTheme {
 
   final int themeIndex;
+  final bool isDark;
 
-  AppTheme({this.themeIndex = 0})
+  AppTheme({this.themeIndex = 0, this.isDark = false})
     :assert(themeIndex >= 0 && themeIndex < _colorThemes.length,
             'themeIndex must be between 0 and ${_colorThemes.length - 1}');
-
 
   ThemeData theme() {
     return ThemeData(
       useMaterial3: true,
-      colorSchemeSeed: _colorThemes[themeIndex]
+      colorSchemeSeed: _colorThemes[themeIndex],
+      brightness: isDark ? Brightness.dark : Brightness.light
     );
   }
 }
