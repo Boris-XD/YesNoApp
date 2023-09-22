@@ -29,6 +29,7 @@ class MessageFieldBox extends StatelessWidget {
       );
 
     return TextFormField(
+      onTapOutside: (event) => focusNode.unfocus(), // This is the line that causes the error
       focusNode: focusNode,
       controller: textController,
       decoration: inputDecoration,
