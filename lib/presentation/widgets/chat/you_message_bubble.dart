@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:yes_no_app/presentation/widgets/chat/image_messages_bubble.dart';
 
 class YouMessageBubble extends StatelessWidget {
-  const YouMessageBubble({super.key});
+  
+  final String textMessage;
+
+  const YouMessageBubble({ required this.textMessage, super.key });
 
   @override
   Widget build(BuildContext context) {
@@ -16,11 +19,11 @@ class YouMessageBubble extends StatelessWidget {
             decoration: BoxDecoration(
               color: colors.secondary,
               borderRadius: BorderRadius.circular(20)),
-            child: const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               child: Text(
-                'Hellos, how are you?',
-                style: TextStyle(color: Colors.black, fontStyle: FontStyle.italic)),
+                textMessage,
+                style: const TextStyle(color: Colors.black, fontStyle: FontStyle.italic)),
               ),
             ),
 
