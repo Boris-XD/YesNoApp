@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:yes_no_app/presentation/providers/chat_provider.dart';
 
 class MessageFieldBox extends StatelessWidget {
   const MessageFieldBox({super.key});
@@ -8,6 +10,7 @@ class MessageFieldBox extends StatelessWidget {
 
     final textController = TextEditingController();
     final focusNode = FocusNode();
+    final chatProvider = context.read<ChatProvider>();
 
     final underlineInputBorder = UnderlineInputBorder(
       borderRadius: BorderRadius.circular(40),
@@ -23,6 +26,7 @@ class MessageFieldBox extends StatelessWidget {
           icon: const Icon(Icons.send),
           onPressed: () {
             final text = textController.value.text;
+            chatProvider.sendMessage(text);
             textController.clear();
           },
         ),
@@ -35,6 +39,7 @@ class MessageFieldBox extends StatelessWidget {
       decoration: inputDecoration,
       onFieldSubmitted: (value)
       {
+        chatProvider.sendMessage(value);
         textController.clear();
         focusNode.requestFocus();
       }
