@@ -19,7 +19,9 @@ class ChatView extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Column(
           children: [
-            Expanded(child: ListView.builder(
+            Expanded(
+              child: ListView.builder(
+                controller: chatProvider.scrollController,
                 itemCount: chatProvider.messages.length,
                 itemBuilder: (context, index) {
 
@@ -32,8 +34,8 @@ class ChatView extends StatelessWidget {
               ),
             ),
             MessageFieldBox(
-              /* onValue: (value) { chatProvider.sendMessage(value); },*/
-              onValue: chatProvider.sendMessage,
+              onValue: (value) { chatProvider.sendMessage(value); },
+              // onValue: chatProvider.sendMessage,
             )
           ],
         )
